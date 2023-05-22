@@ -19,7 +19,7 @@ public class ejercicio2 {
             System.out.println("");
             System.out.println("Introduciendo datos en la clase Aparcamiento...");
 
-            File fichAparcamientos = new File("Aparcamientos.txt"); //csv
+            File fichAparcamientos = new File("Aparcamientos.csv"); //csv
             if (!fichAparcamientos.exists() | !fichAparcamientos.isFile()) {
                 throw new Exception("No existe o no se encuentra el archivo.");
             }
@@ -73,7 +73,7 @@ public class ejercicio2 {
             System.out.println("Datos introducidos con éxito.");
 
             System.out.println("");
-            System.out.println("Calculando número de aparcamientos por cada tipo...");
+            System.out.println("Calculando Celia número de aparcamientos por cada tipo...");
             System.out.println("");
             System.out.println("El número de plazas de rotacion es: " + contRot(hashmapa));
             System.out.println("    //El resto estan en blanco porque el registro esta en blanco)");
@@ -83,7 +83,7 @@ public class ejercicio2 {
             System.out.println("El número de plazas de disuasorias es: " + contDis(hashmapa));
 
             System.out.println("");
-            System.out.println("Calculando aparcamientos por distrito...");
+            System.out.println("Calculando Celia aparcamientos por distrito...");
 
             System.out.println("Aparcamientos en Chamberi: " + contDistChamb(hashmapa));
             System.out.println("Aparcamientos en Centro: " + contDistCentro(hashmapa));
