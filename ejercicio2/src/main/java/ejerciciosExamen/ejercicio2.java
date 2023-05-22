@@ -69,6 +69,20 @@ public class ejercicio2 {
                 hashmapa.put(id, aparcamiento);
 
             }
+            //Defino dos HashMaps para guardar número de plazas de Distritos y de Tipo de Aparcamiento
+            HashMap<String, Integer> plazasPorTipo = new HashMap<>();
+            HashMap<String, Integer> plazasPorDistrito = new HashMap<>();
+
+            // Contabilizar las plazas de cada aparcamiento, tanto por distrito, como por tipo
+            for (String codigo : hashmapa.keySet()) {
+                //Obtengo el aparcamiento para cada codigo
+                Aparcamiento parking = hashmapa.get(codigo);
+                //Con el método getOrDefault se obtiene el valor guardado en el hashmap para esa clave
+                //y si no devuelve el valor por defecto
+                //Asíque metemos para cada parking, su tipo y número total de plazas, más las que tuviera antes
+                plazasPorTipo.put(parking.getTipo(), plazasPorTipo.getOrDefault(parking.getTipo(), 0) + parking.getPlazasTotales());
+                plazasPorDistrito.put(parking.getDistrito(), plazasPorDistrito.getOrDefault(parking.getDistrito(), 0) + parking.getPlazasTotales());
+            }
 
             System.out.println("Datos introducidos con éxito.");
 
@@ -83,11 +97,22 @@ public class ejercicio2 {
             System.out.println("El número de plazas de disuasorias es: " + contDis(hashmapa));
 
             System.out.println("");
+
+            // Mostrar los resultados de Cristina
+            System.out.println("Número de aparcamientos por tipo de Cristina:");
+            for (Map.Entry<String, Integer> entry : plazasPorTipo.entrySet()) {
+                System.out.println(entry.getKey() + ": " + entry.getValue());
+            }
             System.out.println("Calculando Celia aparcamientos por distrito...");
 
             System.out.println("Aparcamientos en Chamberi: " + contDistChamb(hashmapa));
             System.out.println("Aparcamientos en Centro: " + contDistCentro(hashmapa));
-
+            
+            // Mostrar los resultados de Cristina
+            System.out.println("Número de aparcamientos por distrito de Cristina:");
+            for (Map.Entry<String, Integer> entry : plazasPorDistrito.entrySet()) {
+                System.out.println(entry.getKey() + ": " + entry.getValue());
+            }
             lector.close();
 
         } catch (Exception e) {
@@ -143,8 +168,8 @@ public class ejercicio2 {
         }
         return cont;
     }
-    
-        static public int contDistCentro(HashMap hm) {
+
+    static public int contDistCentro(HashMap hm) {
         int cont = 0;
         Iterator<Map.Entry<String, Aparcamiento>> iterator = hm.entrySet().iterator();
         while (iterator.hasNext()) {

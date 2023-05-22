@@ -29,6 +29,7 @@ public class Aparcamiento {
         this.plazasRot = plazasRot;
         this.plazasResid = plazasResid;
         this.plazasDis=plazasDis;
+        this.distrito=distrito;
     }
 
     
@@ -101,6 +102,9 @@ public class Aparcamiento {
         this.plazasDis = plazasDis;
     }
 
+    public int getPlazasTotales(){
+        return getPlazasDis()+getPlazasResid()+getPlazasRot();
+    }
     public String getDistrito() {
         return distrito;
     }
